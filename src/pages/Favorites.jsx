@@ -20,6 +20,7 @@ function Favorites() {
         );
     }
 
+    // No favorite movie
     return (
         <div className="favorites-empty">
             <h2>No Favorite Movie Yet</h2>
