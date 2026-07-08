@@ -1,7 +1,9 @@
 import {createContext, useState, useContext, useEffect} from "react"
 
-const MovieContext = creatContext()
+// This create something like: <MovieContext.Provider value={...}>
+const MovieContext = createContext()
 
+// This function is to use access the context
 export const useMovieContext = () => useContext(MovieContext)
 
 // If we wrap it around our app, it will provide context to the whole app

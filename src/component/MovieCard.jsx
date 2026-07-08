@@ -1,11 +1,16 @@
 // Work for every single movie
 // Display information about that movie
 import "../css/MovieCard.css"
+import { useMovieContext } from "../contexts/MovieContext"
 
 function MovieCard({ movie }) {
+    const {isFavorite, addToFavorites, removeFromFavorites} = useMovieContext()
+    const favorite = isFavorite(movie.id)
 
-    function onFavorite() {
-        alert("clicked")
+    function onFavorite(e) {
+        e.preventDefault()
+        if (favorite) removeFromFavorites(movie.id)
+        else addToFavorites(movie)
     }
 
     return (
@@ -16,8 +21,9 @@ function MovieCard({ movie }) {
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                 <div className="movie-overlay">
                     {/* Call a script when the fav-btn is hit */}
-                    <button className="favorite-btn" onClick={onFavorite}>
-                         🤍
+                    {/* If the movie is favorited, className=active, else "" for css color change*/}
+                    <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavorite}>
+                         ♥
                     </button>
                 </div>
             </div>

@@ -10,6 +10,7 @@ function App() {
 
     return (
         // Wrap inside MovieProvider for context
+        // Children like Home, Favorites component can access to context
         <MovieProvider>
             {/* Display the navbar for all pages */}
             <NavBar />
